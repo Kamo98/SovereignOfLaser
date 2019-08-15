@@ -31,4 +31,9 @@ public class VertexDopScript : MonoBehaviour, IPointerDownHandler
 	{
 		Debug.Log("ДЕАнимация таргета  " + name);
 	}
+
+
+	public void play_simple_click()
+	{
+	}
 }

@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 
 public enum COLOR_OF_VERTEX
 {
+	TRANSPARENT = -1,
 	COLOR1 = 0,
 	COLOR2 = 1
 }
@@ -11,12 +12,15 @@ public class VertexScript : MonoBehaviour, IPointerDownHandler {
 	
 	private GameController gameController;      //Ссылка на игровой котроллер
 	private Animator animator;
-
+	public AudioClip soundClick;
 
 	private void Awake()
 	{
 		gameController = Camera.main.GetComponent<GameController>();
 		animator = GetComponent<Animator>();
+		if (gameController == null)
+			Debug.LogError("GameController = null   VertexScript.Awake()");
+
 	}
 
 	// Use this for initialization
@@ -25,7 +29,8 @@ public class VertexScript : MonoBehaviour, IPointerDownHandler {
 	
 	public void OnPointerDown(PointerEventData eventData)
 	{
-		gameController.add_new_vertex(transform);
+		if (Time.timeScale != 0)
+			gameController.add_new_vertex(transform);
 	}
 
 	// Update is called once per frame
@@ -47,6 +52,9 @@ public class VertexScript : MonoBehaviour, IPointerDownHandler {
 			case COLOR_OF_VERTEX.COLOR1:
 				animator.SetBool("CurrentRed", true);
 			break;
+			case COLOR_OF_VERTEX.COLOR2:
+				animator.SetBool("CurrentGreen", true);
+			break;
 		}
 	}
 
@@ -60,5 +68,11 @@ public class VertexScript : MonoBehaviour, IPointerDownHandler {
 	public void deanimate_select_vertex()
 	{
 		animator.SetBool("Selected", false);
+	}
+
+	public void play_simple_click()
+	{
+		if (soundClick != null)
+			AudioSource.PlayClipAtPoint(soundClick, Vector3.one);
 	}
 }

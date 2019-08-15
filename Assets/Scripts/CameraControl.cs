@@ -12,12 +12,12 @@ public class CameraControl : MonoBehaviour {
 
 	public float accelerationForBrake;
 	public float accelUpForBrake;
-	public float coefForAccel;
 
 	// Текущие параметры движения камеры
 	private Vector2 currentDirection;
 	private float currentAcceleration;
 	private float currentMaxSpeed;
+	private float currentCoefForAccel;
 	private float kForAccel;		//Коэффициент для ускорения
 	
 	private Transform[] labelsForCamera;
@@ -28,6 +28,8 @@ public class CameraControl : MonoBehaviour {
 
 	private GameController gameController;
 	private Camera camera;
+
+	public float standartAspectRatio;
 
 
 	private enum TYPE_OF_MOVE
@@ -46,6 +48,7 @@ public class CameraControl : MonoBehaviour {
 
 	private void Awake()
 	{
+		Debug.Log("Awake Camera Control");
 		rigidBody = GetComponent<Rigidbody2D>();        // Найти rigidBody
 		gameController = GetComponent<GameController>();
 
@@ -72,15 +75,38 @@ public class CameraControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Debug.Log("Start Camera Control");
 		typeOfMove = TYPE_OF_MOVE.ACCEL_DOWN;
 		kForAccel = 1.0f;
+
+		StartCoroutine(CheckForGameOver());
+		
+		//Фиксация ширины и подстройка высоты
+		float ratio = Screen.height / (float)Screen.width;
+		camera.orthographicSize *= ratio / standartAspectRatio;
+		Debug.Log(ratio / standartAspectRatio);
+
+	}
+	
+
+	//Таймер для проверки того, скоро ли наступит проигрыш
+	IEnumerator CheckForGameOver()
+	{
+		while (true)
+		{
+			if ((typeOfMove == TYPE_OF_MOVE.ACCEL_DOWN || typeOfMove == TYPE_OF_MOVE.DOWN_NO_ACCEL || typeOfMove == TYPE_OF_MOVE.BRAKE) 
+				&& !gameController.is_game_over() && soon_game_over())
+			{
+				Debug.Log("soon_game_over");
+				Vibration.Vibrate(350);
+			}
+			yield return new WaitForSeconds(0.4f);
+		}
 	}
 
 
 	private void Update()
 	{
-		//Debug.Log(typeOfMove + "  v = " + rigidBody.velocity + "  " + rigidBody.velocity.magnitude);
-		//Debug.Log(gameController.get_remotest_related_vertex().name);
 		switch (typeOfMove)
 		{
 			case TYPE_OF_MOVE.ACCEL_DOWN:
@@ -129,12 +155,19 @@ public class CameraControl : MonoBehaviour {
 		if (typeOfMove == TYPE_OF_MOVE.ACCEL_DOWN || typeOfMove == TYPE_OF_MOVE.DOWN_NO_ACCEL || typeOfMove == TYPE_OF_MOVE.BRAKE)
 		{
 			if (is_game_over())
-				Debug.Log("GAME OVER");
+			{
+				if (!gameController.is_game_over())
+				{
+					//Сообщить контроллеру о провале уровня
+					gameController.game_over();
+					Debug.Log("GAME OVER");
+				}
+			}
 			else
 			{
 				if (is_need_acceleration())
 				{
-					kForAccel = coefForAccel;
+					kForAccel = currentCoefForAccel;
 					//Debug.Log("is_need_acceleration");
 				}
 				else
@@ -148,8 +181,8 @@ public class CameraControl : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void FixedUpdate () {
-		//Debug.Log("kForAccel = " + kForAccel);
+	void FixedUpdate()
+	{
 		switch (typeOfMove)
 		{
 			case TYPE_OF_MOVE.ACCEL_DOWN:
@@ -157,16 +190,16 @@ public class CameraControl : MonoBehaviour {
 				break;
 			case TYPE_OF_MOVE.ACCEL_UP:
 				rigidBody.AddForce(directionForUp.normalized * accelerationForUp);
-			break;
+				break;
 			case TYPE_OF_MOVE.BRAKE:
 				rigidBody.AddForce((currentDirection * (-1)).normalized * accelerationForBrake);
-			break;
+				break;
 			case TYPE_OF_MOVE.BRAKE_FOR_UP:
 				rigidBody.AddForce((directionForUp * (-1)).normalized * accelUpForBrake);
-			break;
+				break;
 		}
 
-		
+
 		if (typeOfMove == TYPE_OF_MOVE.DOWN_NO_ACCEL || typeOfMove == TYPE_OF_MOVE.ACCEL_DOWN)
 		{
 			// Проверяем, не нужно ли перейти к следующей метки для камеры (по оси Y)
@@ -178,21 +211,11 @@ public class CameraControl : MonoBehaviour {
 		if (typeOfMove == TYPE_OF_MOVE.ACCEL_UP || typeOfMove == TYPE_OF_MOVE.UP_NO_ACCEL)
 		{
 			// Проверяем, не дошли ли мы до источника текущего лазера
-			if (transform.position.y + camera.orthographicSize > gameController.get_position_sourceL().y)
+			if (transform.position.y + camera.orthographicSize > gameController.get_position_sourceL().y + camera.orthographicSize * 0.2f)
 			{
 				typeOfMove = TYPE_OF_MOVE.BRAKE_FOR_UP;
 			}
 		}
-
-
-		
-
-	}
-
-
-	public void move_up ()
-	{
-		typeOfMove = TYPE_OF_MOVE.ACCEL_UP;
 	}
 
 
@@ -216,8 +239,31 @@ public class CameraControl : MonoBehaviour {
 		currentAcceleration = labelForCameraScripts[indexForLabels].accelerationNormal[iterOfLaser];
 		currentDirection = labelForCameraScripts[indexForLabels].directionNormal[iterOfLaser];
 		currentMaxSpeed = labelForCameraScripts[indexForLabels].maxSpeedNormal[iterOfLaser];
+		currentCoefForAccel = labelForCameraScripts[indexForLabels].coefForAccel[iterOfLaser];
 	}
-		
+
+
+
+	// Проверяет, скоро ли наступит поражение (вызывается редко)
+	private bool soon_game_over()
+	{
+		Transform[] enhanceVertexes = gameController.get_enhance_vertexes();
+		if (enhanceVertexes.Length == 0)
+			return true;
+
+		bool soonGameOver = true;
+		foreach (Transform vert in enhanceVertexes)
+		{
+			if (vert.position.y <= transform.position.y + 0.5 * camera.orthographicSize)
+			{
+				soonGameOver = false;
+				break;
+			}
+		}
+		return soonGameOver;
+	}
+
+
 
 	// Проверяет, не все ли текущие доступные вершины выше камеры
 	private bool is_game_over ()
@@ -258,5 +304,27 @@ public class CameraControl : MonoBehaviour {
 			}
 		}
 		return isNeedAcceleration;
+	}
+
+
+	public Vector2 get_velocity()
+	{
+		return rigidBody.velocity;
+	}
+
+	public void move_up()
+	{
+		typeOfMove = TYPE_OF_MOVE.ACCEL_UP;
+	}
+
+
+	public void full_break()
+	{
+		rigidBody.simulated = false;
+	}
+
+	public void resume_move ()
+	{
+		rigidBody.simulated = true;
 	}
 }

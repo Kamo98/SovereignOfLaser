@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // Объект, управляющий игрой
 public class GameController : MonoBehaviour {
@@ -16,6 +17,24 @@ public class GameController : MonoBehaviour {
 	public Transform[] sourceOfLasers;      //Список источнков лазеров
 	public Transform[] targetOfLasers;      //Список приёмников лазеров
 	public GameObject Laser;                //Префаб лазера
+	public Text scoreText;
+
+	public int maxScore;
+
+	public GameObject lostCanvas;       //Префаб окна проигрыша
+	public GameObject pauseCanvas;      //Префаб окна паузы
+	public GameObject levelCompleteCanvas;	//Префаб окна после прохождения уровня
+	private GameObject pausePanelObj;	//Окно паузы
+
+	//Для звуков
+	public GameObject soundVertexError;
+	private AudioSource vertexErrorAudio;
+	public GameObject soundGameOver;
+	private AudioSource gameOverAudio;
+
+	private bool gameOver;
+	private bool levelComplete;
+	private bool pause;
 
 	private Dictionary<Transform, int> dictOfTargets;       //Приёмник лазера -> номер лазера (для идентификации приёмников)
 
@@ -25,11 +44,17 @@ public class GameController : MonoBehaviour {
 
 	private void Awake()
 	{
+		Debug.Log("Awake Game Controller");
+		Time.timeScale = 1;
 		cameraControl = GetComponent<CameraControl>();
+		vertexErrorAudio = soundVertexError.GetComponent<AudioSource>();
+		gameOverAudio = soundGameOver.GetComponent<AudioSource>();
 	}
 
 	// Use this for initialization
 	void Start() {
+
+		Debug.Log("Start Game Controller");
 		GameObject vertexes = GameObject.Find("Vertexes");      //Получаем объект со всеми вершинами
 		graphBuilder = vertexes.GetComponent<GraphBuilder>();
 
@@ -58,71 +83,94 @@ public class GameController : MonoBehaviour {
 		iteratorOfLaser = 0;
 
 		change_current_vertex();
+		gameOver = false;
+
+
 	}
 
-	
+
+	/*private void Update()
+	{
+		//Для анимации паузы
+		if (isPause && pausePanelObj.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("CanvasPauseStatic"))
+			
+
+	}*/
+
 
 	// Добавление новой вершины в текущий путь
 	public void add_new_vertex(Transform vertex)
 	{
-		// Добавляем новую вершину в путь, если она свободна
-		if (isFreeVertex[vertex])
+		if (!gameOver && !levelComplete && !pause)
 		{
-			if (graphBuilder.is_related_vertex(currentVertex, vertex))      // и смежна с текущей
+			// Добавляем новую вершину в путь, если она свободна
+			if (isFreeVertex[vertex])
 			{
-				bool isNeedLaser = true;            //Нужно ли рисовать лазер
-				bool isNeedChangeLaser = false;     //Нужна ли смена лазера
-
-				// Если выбранная вершина - целевая
-				if (vertex.tag == "TargetOfLaser")
+				if (graphBuilder.is_related_vertex(currentVertex, vertex))      // и смежна с текущей
 				{
-					if (dictOfTargets[vertex] == (int)iteratorOfLaser)   //цель для текущего лазера?
-						isNeedChangeLaser = true;
-					else
+					bool isNeedLaser = true;            //Нужно ли рисовать лазер
+					bool isNeedChangeLaser = false;     //Нужна ли смена лазера
+
+					// Если выбранная вершина - целевая
+					if (vertex.tag == "TargetOfLaser")
 					{
-						isNeedLaser = false;
-					}
-				}
-
-				if (isNeedLaser)
-				{
-					pathOfLasers[(int)iteratorOfLaser].Add(vertex);  //Добавляем вершину в путь
-					isFreeVertex[vertex] = false;               //Помечаем как занятую
-					GameObject laser = Instantiate(Laser);      //Создаем объект лазера из префаба
-					Laser laserScript = laser.GetComponent<Laser>();        //Получаем скрипт лазера
-					laserScript.init_laser(currentVertex, vertex, true, iteratorOfLaser);    //Инициализируем лазерный луч
-
-
-					// Оповещаем вершину о начале движения лазера к ней
-					if (!isNeedChangeLaser) {
-						VertexScript vertexScript = vertex.GetComponent<VertexScript>();
-						//vertexScript.prepare_for_change_color();
-						vertexScript.change_color(iteratorOfLaser);
+						if (dictOfTargets[vertex] == (int)iteratorOfLaser)   //цель для текущего лазера?
+							isNeedChangeLaser = true;
+						else
+						{
+							isNeedLaser = false;
+						}
 					}
 
-					unselected_related_vertexes();      //Снимаем выделение со старых смежных вершин
+					if (isNeedLaser)
+					{
+						pathOfLasers[(int)iteratorOfLaser].Add(vertex);  //Добавляем вершину в путь
+						isFreeVertex[vertex] = false;               //Помечаем как занятую
+
+						instantiate_laser(currentVertex, vertex, iteratorOfLaser, true, 0, false);      //Создать лазер со стандартной скоростью
+
+
+						// Оповещаем вершину о начале движения лазера к ней
+						if (!isNeedChangeLaser)
+						{
+							//Запуск анимации вершины
+							VertexScript vertexScript = vertex.GetComponent<VertexScript>();
+							vertexScript.change_color(iteratorOfLaser);
+							vertexScript.play_simple_click();
+							//Вибрация
+							Vibration.Vibrate(20);
+						}
+						else
+						{
+							VertexDopScript vertexDopScript = vertex.GetComponent<VertexDopScript>();
+							vertexDopScript.play_simple_click();
+							//Вибрация при попадании в приёмник
+							Vibration.Vibrate(100);
+						}
+
+						unselected_related_vertexes();      //Снимаем выделение со старых смежных вершин
+					}
+
+					if (isNeedChangeLaser)
+						next_laser();
+					else if (isNeedLaser)
+						change_current_vertex();
 				}
-
-				if (isNeedChangeLaser)
-					next_laser();
-				else if (isNeedLaser)
-					change_current_vertex();
-
-				// Снимаем выделение с текущей вершины
-				//unselect_vertex(currentVertex);
-
-
-				/*if (isNeedLaser)
+				else
 				{
-					if (!isNeedChangeLaser)
-						selected_related_vertexes();        //Выделяем новые смежные вершины
-				}*/
+					instantiate_laser(currentVertex, vertex, iteratorOfLaser, false, 0.05f, true);     //Создать лазер
+					Debug.Log("Вершина " + vertex.name + " недоступна");
+					vertexErrorAudio.Play();
+				}
 			}
 			else
-				Debug.Log("Вершина " + vertex.name + " недоступна");
+			{
+				if (!graphBuilder.is_related_vertex(currentVertex, vertex))
+					instantiate_laser(currentVertex, vertex, iteratorOfLaser, false, 0.05f, true);     //Создать лазер
+				Debug.Log("Вершина " + vertex.name + " занята");
+				vertexErrorAudio.Play();
+			}
 		}
-		else
-			Debug.Log("Вершина " + vertex.name + " занята");
 	}
 
 
@@ -204,6 +252,7 @@ public class GameController : MonoBehaviour {
 		if ((int)iteratorOfLaser == targetOfLasers.Length - 1)
 		{
 			Debug.Log("Уровень завершён");
+			level_complete();
 		} else
 		{
 			// Игрок начинает строить лазер со следующего в списке
@@ -217,6 +266,19 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+
+	private void instantiate_laser (Transform from, Transform to, COLOR_OF_VERTEX color, bool isLongLaser, float speed, bool needSpeed)
+	{
+		GameObject laser = Instantiate(Laser);      //Создаем объект лазера из префаба
+		Laser laserScript = laser.GetComponent<Laser>();        //Получаем скрипт лазера
+		if (needSpeed)
+			laserScript.speed = speed;
+		laserScript.init_laser(from, to, isLongLaser, color);    //Инициализируем лазерный луч
+	}
+
+
+	public bool is_game_over () { return gameOver; }
+	public bool is_pause () { return pause; }
 	
 
 	private void select_vertex(Transform vertex)
@@ -251,9 +313,46 @@ public class GameController : MonoBehaviour {
 	public void add_to_score (int count)
 	{
 		score += count;
-		Debug.Log("Score = " + score);
+		scoreText.text = score.ToString();
 	}
 
+
+
+	private void level_complete ()
+	{
+		levelComplete = true;
+		GameObject levelCompleteObj = Instantiate(levelCompleteCanvas);
+		levelCompleteObj.GetComponent<Canvas>().worldCamera = Camera.main;
+		cameraControl.full_break();
+	}
+
+	public void game_over()
+	{
+		gameOver = true;
+		gameOverAudio.Play();
+		//lostCanvas.gameObject.SetActive(true);
+		GameObject lostCanvasObj = Instantiate(lostCanvas);
+		lostCanvasObj.GetComponent<Canvas>().worldCamera = Camera.main;
+		cameraControl.full_break();
+	}
+
+	// Пауза игры
+	public void pause_game ()
+	{
+		if (!pause)
+		{
+			pause = true;
+			pausePanelObj = Instantiate(pauseCanvas);
+			pausePanelObj.GetComponent<Canvas>().worldCamera = Camera.main;
+		}
+	}
+
+	// Продолжение игры
+	public void resume_game()
+	{
+		pause = false;
+		pausePanelObj.GetComponent<Animator>().SetBool("Pause", false);
+	}
 
 	private void log_dcitionary<Tkey, Tval>(Dictionary<Tkey, Tval> dict)
 	{

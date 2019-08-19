@@ -279,11 +279,14 @@ public class GameController : MonoBehaviour {
 
 	public bool is_game_over () { return gameOver; }
 	public bool is_pause () { return pause; }
-	
+	public int get_score () { return score; }
+	public int get_max_score() { return maxScore; }
+
+
 
 	private void select_vertex(Transform vertex)
 	{
-		if (vertex.tag == "SourceOfLasers" || vertex.tag == "TargetOfLaser")
+		if (vertex.tag == "SorceOfLasers" || vertex.tag == "TargetOfLaser")
 		{
 			VertexDopScript vertexScript = vertex.GetComponent<VertexDopScript>();
 			vertexScript.animate_select_vertex();
@@ -297,7 +300,7 @@ public class GameController : MonoBehaviour {
 
 	private void unselect_vertex(Transform vertex)
 	{
-		if (vertex.tag == "SourceOfLasers" || vertex.tag == "TargetOfLaser")
+		if (vertex.tag == "SorceOfLasers" || vertex.tag == "TargetOfLaser")
 		{
 			VertexDopScript vertexScript = vertex.GetComponent<VertexDopScript>();
 			vertexScript.deanimate_select_vertex();
@@ -339,7 +342,7 @@ public class GameController : MonoBehaviour {
 	// Пауза игры
 	public void pause_game ()
 	{
-		if (!pause)
+		if (!pause && !gameOver && !levelComplete)
 		{
 			pause = true;
 			pausePanelObj = Instantiate(pauseCanvas);

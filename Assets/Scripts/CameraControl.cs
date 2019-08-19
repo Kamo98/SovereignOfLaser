@@ -296,7 +296,7 @@ public class CameraControl : MonoBehaviour {
 		foreach (Transform vert in enhanceVertexes)
 		{
 			if (vert.position.y <= cameraPos.y + camera.orthographicSize 
-				&& vert.position.y >= cameraPos.y - camera.orthographicSize 
+				&& vert.position.y >= cameraPos.y - 0.85 * camera.orthographicSize 
 				&& vert.position.y <= gameController.get_current_vertex().position.y)
 			{
 				isNeedAcceleration = false;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 // Объект, управляющий игрой
 public class GameController : MonoBehaviour {
@@ -84,18 +85,20 @@ public class GameController : MonoBehaviour {
 
 		change_current_vertex();
 		gameOver = false;
-
-
+		
+		currentVertex.GetComponent<VertexDopScript>().animate_select_vertex();
 	}
 
 
-	/*private void Update()
+	private void Update()
 	{
-		//Для анимации паузы
-		if (isPause && pausePanelObj.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("CanvasPauseStatic"))
-			
-
-	}*/
+		if (Application.platform == RuntimePlatform.Android)
+			if (Input.GetKey(KeyCode.Home) || Input.GetKey(KeyCode.Menu))
+			{
+				Debug.Log("KeyUp Home or Menu");
+				pause_game();
+			}
+	}
 
 
 	// Добавление новой вершины в текущий путь
@@ -144,6 +147,7 @@ public class GameController : MonoBehaviour {
 						{
 							VertexDopScript vertexDopScript = vertex.GetComponent<VertexDopScript>();
 							vertexDopScript.play_simple_click();
+							vertexDopScript.hit_true_laser();
 							//Вибрация при попадании в приёмник
 							Vibration.Vibrate(100);
 						}
@@ -258,6 +262,11 @@ public class GameController : MonoBehaviour {
 			// Игрок начинает строить лазер со следующего в списке
 			iteratorOfLaser++;
 
+			//Выключить анимацию предыдущего источника
+			sourceOfLasers[(int)iteratorOfLaser - 1].GetComponent<VertexDopScript>().deanimate_select_vertex();
+			//Включить анимацию текущего источника
+			sourceOfLasers[(int)iteratorOfLaser].GetComponent<VertexDopScript>().animate_select_vertex();
+
 			// Смена текущей вершины
 			change_current_vertex();
 
@@ -278,6 +287,7 @@ public class GameController : MonoBehaviour {
 
 
 	public bool is_game_over () { return gameOver; }
+	public bool is_level_complete () { return levelComplete; }
 	public bool is_pause () { return pause; }
 	public int get_score () { return score; }
 	public int get_max_score() { return maxScore; }
@@ -329,6 +339,14 @@ public class GameController : MonoBehaviour {
 		cameraControl.full_break();
 	}
 
+
+	public void move_to_next_level ()
+	{
+		string nameOfNextLevel = LevelsManager.nextLevels[SceneManager.GetActiveScene().name];
+		if (nameOfNextLevel != null)
+			SceneManager.LoadScene(nameOfNextLevel);
+	}
+
 	public void game_over()
 	{
 		gameOver = true;
@@ -348,6 +366,19 @@ public class GameController : MonoBehaviour {
 			pausePanelObj = Instantiate(pauseCanvas);
 			pausePanelObj.GetComponent<Canvas>().worldCamera = Camera.main;
 		}
+	}
+
+	public void pause_game_for_hint ()
+	{
+		pause = true;
+		cameraControl.full_break();
+	}
+
+	public void resume_game_for_hint()
+	{
+		Debug.Log("resume_game_for_hint");
+		pause = false;
+		cameraControl.resume_move();
 	}
 
 	// Продолжение игры

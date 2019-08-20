@@ -45,13 +45,15 @@ public class LevelsManager : MonoBehaviour {
 				nextLevels[transform.GetChild(i).name] = transform.GetChild(i + 1).name;
 		}
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
-		if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			Debug.Log("Esc");
-			SceneManager.LoadScene("main");
-		}
+	void Update()
+	{
+		if (Application.platform == RuntimePlatform.Android)
+			if (Input.GetKeyUp(KeyCode.Escape))
+			{
+				Debug.Log("KeyUp Esc");
+				SceneManager.LoadScene("main");
+			}
 	}
 }

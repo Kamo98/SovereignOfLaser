@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 58384684362709016}
   m_Layer: 0
   m_Name: Vertex 1
-  m_TagString: Untagged
+  m_TagString: Vertex
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1436027862605458}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.21, y: -0.02, z: 0}
+  m_LocalPosition: {x: -0.43, y: 0.35, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children:
   - {fileID: 4313575863098422}
@@ -116,7 +116,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.2
 --- !u!95 &95016252416909308
 Animator:
   serializedVersion: 3
@@ -146,6 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundClick: {fileID: 0}
+  hintForVisible: {fileID: 0}
+  hintForClick: {fileID: 0}
 --- !u!212 &212148191540812260
 SpriteRenderer:
   m_ObjectHideFlags: 1

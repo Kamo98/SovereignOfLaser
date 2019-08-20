@@ -46,7 +46,7 @@ public class UI_Buttons : MonoBehaviour {
 				SceneManager.LoadScene("List of levels");
 			break;
 			case "Rating":
-				Application.OpenURL("https://www.youtube.com/watch?v=-4_Kr_fKEls&list=PL0lO_mIqDDFXusFv_NRgccTQHFBdChWCo&index=6");
+				Application.OpenURL("https://play.google.com/store/apps");
 			break;
 
 			case "Button replay":       //Перезагрузка уровня
@@ -61,7 +61,10 @@ public class UI_Buttons : MonoBehaviour {
 			break;
 			case "Button resume":
 				gameController.resume_game();
-			break; 
+			break;
+			case "Button next level":
+				gameController.move_to_next_level();
+			break;
 		}
 	}
 }

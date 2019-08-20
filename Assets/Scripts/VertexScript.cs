@@ -14,6 +14,9 @@ public class VertexScript : MonoBehaviour, IPointerDownHandler {
 	private Animator animator;
 	public AudioClip soundClick;
 
+	public Transform hintForVisible;
+	public Transform hintForClick;
+
 	private void Awake()
 	{
 		gameController = Camera.main.GetComponent<GameController>();
@@ -33,21 +36,21 @@ public class VertexScript : MonoBehaviour, IPointerDownHandler {
 			gameController.add_new_vertex(transform);
 	}
 
-	// Update is called once per frame
-	void FixedUpdate () {
-		
-	}
-
-
-	/*public void prepare_for_change_color()
+	private void Update()
 	{
-		Debug.Log(name + "  prepare_for_change_color");
-		animator.speed = 3;
-	}*/
+		if (hintForVisible != null)
+		{
+			if (transform.position.y >= Camera.main.transform.position.y - 0.9f * Camera.main.orthographicSize)
+				hintForVisible.GetComponent<HintScript>().permissionStartOnVisible = true;
+		}
+	}
+	
 
 	// Запуск анимационной смены цвета вершины
 	public void change_color(COLOR_OF_VERTEX numOfAnimation)
 	{
+		if (hintForClick != null)
+			hintForClick.GetComponent<HintScript>().permissionStartOnClick = true;
 		switch (numOfAnimation) {
 			case COLOR_OF_VERTEX.COLOR1:
 				animator.SetBool("CurrentRed", true);

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 58723210810059972}
   - component: {fileID: 114276377621924200}
   - component: {fileID: 82562706283229688}
+  - component: {fileID: 95590182633569410}
   m_Layer: 0
   m_Name: VertexTarget
   m_TagString: TargetOfLaser
@@ -40,7 +41,7 @@ GameObject:
   - component: {fileID: 212619151644867830}
   - component: {fileID: 60728663474373124}
   m_Layer: 0
-  m_Name: targetLaser
+  m_Name: sourceLaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,8 +54,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1260023718305274}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.019666238, y: -0.35727078, z: 0}
-  m_LocalScale: {x: 2.1276598, y: 2.1276598, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 4636054238534094}
   m_RootOrder: 0
@@ -66,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1135886020002578}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.195, y: -13.996, z: 0}
+  m_LocalPosition: {x: 1.68, y: -46.87, z: 0}
   m_LocalScale: {x: 0.46999997, y: 0.46999997, z: 1}
   m_Children:
   - {fileID: 4429333882685694}
@@ -87,7 +88,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.6
 --- !u!60 &60728663474373124
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -104,7 +105,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.74, y: 0.34}
+    oldSize: {x: 4.5, y: 4.5}
     newSize: {x: 0.74, y: 0.34}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -200,6 +201,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95590182633569410
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1135886020002578}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 29069f3ba273ecc44a73f0a4678de05d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114276377621924200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -211,6 +229,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d14d5e2cd16fa4140883a86e4dc2a647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hintForVisible: {fileID: 0}
+  hintForClick: {fileID: 0}
 --- !u!212 &212619151644867830
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -243,7 +263,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1c41a1ce6a3cfb443abe08b636c050c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d340aa5516a1b6d42a92c1fcf6916557, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

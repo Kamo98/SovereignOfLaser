@@ -95,7 +95,7 @@ public class CameraControl : MonoBehaviour {
 		while (true)
 		{
 			if ((typeOfMove == TYPE_OF_MOVE.ACCEL_DOWN || typeOfMove == TYPE_OF_MOVE.DOWN_NO_ACCEL || typeOfMove == TYPE_OF_MOVE.BRAKE) 
-				&& !gameController.is_game_over() && soon_game_over())
+				&& !gameController.is_game_over() && !gameController.is_level_complete() && !gameController.is_pause() && soon_game_over())
 			{
 				Debug.Log("soon_game_over");
 				Vibration.Vibrate(350);

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4459596075482408}
   - component: {fileID: 58009535759977048}
   - component: {fileID: 114808439766138810}
+  - component: {fileID: 95909698638807036}
   m_Layer: 0
   m_Name: VertexSource2
   m_TagString: SorceOfLasers
@@ -52,8 +53,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1889113681690950}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.007993618, y: 0.3767719, z: 0}
-  m_LocalScale: {x: 2.1276598, y: 2.1276598, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 4459596075482408}
   m_RootOrder: 0
@@ -65,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1741696532230332}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.299757, y: 1.8480825, z: 0}
+  m_LocalPosition: {x: 1.93, y: 1.5, z: 0}
   m_LocalScale: {x: 0.46999997, y: 0.46999997, z: 1}
   m_Children:
   - {fileID: 4194371786379998}
@@ -103,7 +104,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.49, y: 0.4}
+    oldSize: {x: 4.5, y: 4.5}
     newSize: {x: 0.49, y: 0.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -120,6 +121,23 @@ PolygonCollider2D:
       - {x: 0.055021882, y: -0.16065788}
       - {x: 0.24635375, y: -0.16375494}
       - {x: 0.24499999, y: 0.19999999}
+--- !u!95 &95909698638807036
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1741696532230332}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 05b166800be76f94896dd95201eb584c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114808439766138810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,6 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d14d5e2cd16fa4140883a86e4dc2a647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hintForVisible: {fileID: 0}
+  hintForClick: {fileID: 0}
 --- !u!212 &212552758845448280
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -163,7 +183,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 94ea576f5da3fa44d92bcb990c2f8d1e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ef75852ef695ff74a824aba38ab82729, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

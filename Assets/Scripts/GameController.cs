@@ -353,6 +353,7 @@ public class GameController : MonoBehaviour {
 	// Продолжение игры
 	public void resume_game()
 	{
+		Debug.Log("resume_game");
 		pause = false;
 		pausePanelObj.GetComponent<Animator>().SetBool("Pause", false);
 	}

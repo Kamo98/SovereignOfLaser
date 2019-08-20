@@ -111,7 +111,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -122,7 +122,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 67.81786, y: 78.90635}
   m_EdgeRadius: 0
 --- !u!114 &114352732598474192
 MonoBehaviour:
@@ -168,8 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7157fb87cee749a4a84648fe240b8db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalButton: {fileID: 21300000, guid: 10612bae0048ed4408d53e52b2276c10, type: 3}
-  activeButton: {fileID: 21300000, guid: 55fff9c102b7301468c738a08d1623be, type: 3}
+  normalButton: {fileID: 21300000, guid: fb8ae68399ba6aa4b8413faebcf65b51, type: 3}
+  activeButton: {fileID: 21300000, guid: 1fb7cfb91b8264047bad9a40941c8ae9, type: 3}
 --- !u!114 &114477999995091458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -189,7 +189,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 10612bae0048ed4408d53e52b2276c10, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb8ae68399ba6aa4b8413faebcf65b51, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -403,8 +403,8 @@ RectTransform:
   m_Father: {fileID: 224715883993658240}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.08400001, y: 0.21942459}
-  m_AnchorMax: {x: 0.163, y: 0.87119585}
+  m_AnchorMin: {x: 0.02937579, y: 0.21942459}
+  m_AnchorMax: {x: 0.08886717, y: 0.87119585}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

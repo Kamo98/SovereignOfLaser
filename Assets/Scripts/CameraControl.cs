@@ -275,7 +275,7 @@ public class CameraControl : MonoBehaviour {
 		bool isGameOver = true;
 		foreach (Transform vert in enhanceVertexes)
 		{
-			if (vert.position.y <= transform.position.y + camera.orthographicSize)
+			if (vert.position.y <= transform.position.y + 1.2 * camera.orthographicSize)
 			{
 				isGameOver = false;
 				break;

@@ -27,19 +27,23 @@ public class UI_Buttons : MonoBehaviour {
 	}
 	
 
-	private void OnMouseDown()
+	public void OnMouseDown()
 	{
+		Debug.Log("OnMouseDown");
+		Vibration.Vibrate(40);
 		img.sprite = activeButton;
 	}
 
-	private void OnMouseUp()
+	public void OnMouseUp()
 	{
+		Debug.Log("OnMouseUp");
 		img.sprite = normalButton;
 		
 	}
 
-	private void OnMouseUpAsButton()
+	public void OnMouseUpAsButton()
 	{
+		Debug.Log("OnMouseUpAsButton");
 		switch (gameObject.name)
 		{
 			case "Play":

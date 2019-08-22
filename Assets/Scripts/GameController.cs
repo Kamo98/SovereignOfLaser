@@ -25,13 +25,18 @@ public class GameController : MonoBehaviour {
 	public GameObject lostCanvas;       //Префаб окна проигрыша
 	public GameObject pauseCanvas;      //Префаб окна паузы
 	public GameObject levelCompleteCanvas;	//Префаб окна после прохождения уровня
-	private GameObject pausePanelObj;	//Окно паузы
+	private GameObject pausePanelObj;   //Окно паузы
 
 	//Для звуков
-	public GameObject soundVertexError;
+	public GameObject audioObject;
+	//public GameObject soundVertexError;
 	private AudioSource vertexErrorAudio;
-	public GameObject soundGameOver;
+	//public GameObject soundGameOver;
 	private AudioSource gameOverAudio;
+	//public GameObject soundBack;
+	private AudioSource backAudio;
+	//public GameObject soundVictory;
+	private AudioSource victoryAudio;
 
 	private bool gameOver;
 	private bool levelComplete;
@@ -48,8 +53,14 @@ public class GameController : MonoBehaviour {
 		Debug.Log("Awake Game Controller");
 		Time.timeScale = 1;
 		cameraControl = GetComponent<CameraControl>();
-		vertexErrorAudio = soundVertexError.GetComponent<AudioSource>();
+		/*vertexErrorAudio = soundVertexError.GetComponent<AudioSource>();
 		gameOverAudio = soundGameOver.GetComponent<AudioSource>();
+		backAudio = soundBack.GetComponent<AudioSource>();
+		victoryAudio = soundVictory.GetComponent<AudioSource>();*/
+		vertexErrorAudio = audioObject.transform.Find("VertexError").GetComponent<AudioSource>();
+		gameOverAudio = audioObject.transform.Find("GameOver").GetComponent<AudioSource>();
+		backAudio = audioObject.transform.Find("BackAudio").GetComponent<AudioSource>();
+		victoryAudio = audioObject.transform.Find("Victory").GetComponent<AudioSource>();
 	}
 
 	// Use this for initialization
@@ -337,6 +348,9 @@ public class GameController : MonoBehaviour {
 		GameObject levelCompleteObj = Instantiate(levelCompleteCanvas);
 		levelCompleteObj.GetComponent<Canvas>().worldCamera = Camera.main;
 		cameraControl.full_break();
+
+		backAudio.Stop();
+		victoryAudio.Play();
 	}
 
 
@@ -350,11 +364,13 @@ public class GameController : MonoBehaviour {
 	public void game_over()
 	{
 		gameOver = true;
-		gameOverAudio.Play();
 		//lostCanvas.gameObject.SetActive(true);
 		GameObject lostCanvasObj = Instantiate(lostCanvas);
 		lostCanvasObj.GetComponent<Canvas>().worldCamera = Camera.main;
 		cameraControl.full_break();
+
+		backAudio.Stop();
+		gameOverAudio.Play();
 	}
 
 	// Пауза игры

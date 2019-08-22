@@ -33,18 +33,19 @@ public class CloseHint : MonoBehaviour {
 			}
 	}
 
-	private void OnMouseDown()
+	public void OnMouseDown()
 	{
+		Vibration.Vibrate(40);
 		img.sprite = activeButton;
 	}
 
-	private void OnMouseUp()
+	public void OnMouseUp()
 	{
 		img.sprite = normalButton;
 		
 	}
 
-	private void OnMouseUpAsButton()
+	public void OnMouseUpAsButton()
 	{
 		gameController.resume_game_for_hint();
 		closingObject.SetActive(false);

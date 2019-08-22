@@ -76,15 +76,19 @@ public class LevelButton : MonoBehaviour {
 	}
 
 
-	private void OnMouseDown()
+	public void OnMouseDown()
 	{
-		if (state == State_of_level.complete)
-			imgLevelButton.sprite = completeLevelImgActive;
-		else if (state == State_of_level.current)
-			imgLevelButton.sprite = currentLevelImgActive;
+		if (state != State_of_level.locked)
+		{
+			Vibration.Vibrate(40);
+			if (state == State_of_level.complete)
+				imgLevelButton.sprite = completeLevelImgActive;
+			else if (state == State_of_level.current)
+				imgLevelButton.sprite = currentLevelImgActive;
+		}
 	}
 
-	private void OnMouseUp()
+	public void OnMouseUp()
 	{
 		if (state == State_of_level.complete)
 			imgLevelButton.sprite = completeLevelImg;
@@ -92,7 +96,7 @@ public class LevelButton : MonoBehaviour {
 			imgLevelButton.sprite = currentLevelImg;
 	}
 
-	private void OnMouseUpAsButton()
+	public void OnMouseUpAsButton()
 	{
 		if (state != State_of_level.locked)
 			SceneManager.LoadScene(name);

@@ -484,11 +484,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4987420156859434, guid: 68b643d134f9a7f4fa9b04c767955fea,
     type: 2}
   m_PrefabInternal: {fileID: 745356568}
---- !u!1 &449517714 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1852241764164658, guid: e9918aaf1e789c144a8a04f9a4122251,
-    type: 2}
-  m_PrefabInternal: {fileID: 801237303}
 --- !u!1001 &473492610
 Prefab:
   m_ObjectHideFlags: 0
@@ -543,11 +538,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e020f3fc10c71a4caf50b6b296faaed, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &502909474 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1510546641216462, guid: e9918aaf1e789c144a8a04f9a4122251,
-    type: 2}
-  m_PrefabInternal: {fileID: 801237303}
 --- !u!1 &542185764
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,8 +659,7 @@ MonoBehaviour:
     type: 2}
   levelCompleteCanvas: {fileID: 1011986558949098, guid: 5e1fc83ae2b70734486df50a4bcbc847,
     type: 2}
-  soundVertexError: {fileID: 449517714}
-  soundGameOver: {fileID: 502909474}
+  audioObject: {fileID: 801237304}
 --- !u!81 &542185769
 AudioListener:
   m_ObjectHideFlags: 0
@@ -4699,6 +4688,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9918aaf1e789c144a8a04f9a4122251, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &801237304 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1569043263756644, guid: e9918aaf1e789c144a8a04f9a4122251,
+    type: 2}
+  m_PrefabInternal: {fileID: 801237303}
 --- !u!4 &812568776 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4700744258824458, guid: 6132effaf9b6a994d9666a229e299e45,

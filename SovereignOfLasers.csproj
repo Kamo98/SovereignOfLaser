@@ -76,6 +76,12 @@
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Monetization.Editor">
+      <HintPath>Assets\UnityAds\UnityEngine.Monetization.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements.Editor">
+      <HintPath>Assets\UnityAds\UnityEngine.Advertisements.Editor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraControl.cs" />
@@ -98,6 +104,9 @@
     <Compile Include="Assets\Scripts\VertexDopScript.cs" />
     <Compile Include="Assets\Scripts\VertexScript.cs" />
     <Compile Include="Assets\Scripts\Vibration.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\UnityAds\link.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

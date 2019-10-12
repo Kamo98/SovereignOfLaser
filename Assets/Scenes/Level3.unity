@@ -662,7 +662,7 @@ MonoBehaviour:
   - 0.7
   - 0.6
   maxSpeedNormal:
-  - 5
+  - 3
   - 2
   coefForAccel:
   - 2
@@ -9574,7 +9574,7 @@ MonoBehaviour:
   - 1.2
   maxSpeedNormal:
   - 3
-  - 4
+  - 3
   coefForAccel:
   - 2
   - 2
@@ -11733,11 +11733,11 @@ MonoBehaviour:
   - 0.8
   - 0.6
   maxSpeedNormal:
-  - 3
-  - 3
+  - 2
+  - 2
   coefForAccel:
-  - 2
-  - 2
+  - 1.2
+  - 1.2
 --- !u!212 &1409686118
 SpriteRenderer:
   m_ObjectHideFlags: 0

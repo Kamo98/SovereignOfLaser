@@ -108,7 +108,7 @@ MonoBehaviour:
   m_MinSize: {x: 787, y: 492}
   m_MaxSize: {x: 16012, y: 14042}
   vertical: 1
-  controlID: 146
+  controlID: 147
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_MinSize: {x: 787, y: 492}
   m_MaxSize: {x: 16012, y: 14042}
   vertical: 0
-  controlID: 147
+  controlID: 148
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_MinSize: {x: 510, y: 492}
   m_MaxSize: {x: 12010, y: 14042}
   vertical: 1
-  controlID: 80
+  controlID: 81
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_MinSize: {x: 510, y: 221}
   m_MaxSize: {x: 12010, y: 4021}
   vertical: 0
-  controlID: 81
+  controlID: 82
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -225,8 +225,8 @@ MonoBehaviour:
     y: 0
     width: 591
     height: 497
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -354,7 +354,7 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMin: 1
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
-    m_HSlider: 1
+    m_HSlider: 0
     m_VSlider: 1
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
@@ -367,18 +367,18 @@ MonoBehaviour:
       y: 17
       width: 587
       height: 459
-    m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 293.5, y: 229.5}
+    m_Scale: {x: 0.23906253, y: 0.23906252}
+    m_Translation: {x: 293.5, y: 229.50002}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -293.5
-      y: -229.5
-      width: 587
-      height: 459
+      x: -1227.7123
+      y: -960
+      width: 2455.4246
+      height: 1919.9999
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
@@ -415,9 +415,9 @@ MonoBehaviour:
     height: 476
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: d0260000
+    m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 2cd2ffff8ad7ffff1afcffff00000000522d0000cc2d00007c2e0000
+    m_ExpandedIDs: bebcf3ffb6e7f8ff44f7f8ffe803f9ffe014faffe046faff126bfcffa475fcff8480fcff168bfcfff695fcffb2a1fcff52bafcff44c6fcffd4d0fcff00dffcff94befffffec3fffff2d3ffff84e6ffff00000000fc3e00004e3f0000ec3f00006640000016410000200901002c090100800901001e0a0100980a0100440b01008852020094520200ee5202008c5302000e540200c6540200
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -436,7 +436,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 9}
     m_SearchString: 
   m_ExpandedScenes:
-  - Level4
+  - Level3c
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -472,9 +472,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.22019333, y: -16.352365, z: -5.413086}
+    m_Target: {x: 1.3569126, y: -39.646225, z: -4.1132812}
     speed: 2
-    m_Value: {x: -0.22019333, y: -16.352365, z: -5.413086}
+    m_Value: {x: 1.3569126, y: -39.646225, z: -4.1132812}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -501,9 +501,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 35.822327
+    m_Target: 14.1889105
     speed: 2
-    m_Value: 35.822327
+    m_Value: 14.1889105
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -616,19 +616,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scenes
+    - Assets/Resources/Blocks
   m_ViewMode: 1
   m_StartGridSize: 75
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Resources/Blocks
   m_LastFoldersGridSize: 75
   m_LastProjectPath: H:\MyProjects\Unity\SovereignOfLasers
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 155}
-    m_SelectedIDs: 1a2b0000
-    m_LastClickedID: 11034
-    m_ExpandedIDs: 000000008e260000a4260000be280000542900008c290000ea290000ae2a0000c42a000000ca9a3bffffff7f
+    m_SelectedIDs: ae350000
+    m_LastClickedID: 13742
+    m_ExpandedIDs: 00000000ba340000c8340000c2350000123600002c36000058360000a0360000ae36000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -656,7 +656,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008e260000a4260000be280000542900008c290000ea290000ae2a0000c42a0000
+    m_ExpandedIDs: 00000000ba340000c8340000c2350000123600002c36000058360000a0360000ae360000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

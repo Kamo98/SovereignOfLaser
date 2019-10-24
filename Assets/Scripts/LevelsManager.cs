@@ -20,6 +20,7 @@ public class LevelsManager : MonoBehaviour {
 	// Use this for initialization
 	void Start()
 	{
+		//PlayerPrefs.SetString("IsNotFirst", "");		//Для сброса пользовательских настроек
 		if (PlayerPrefs.GetString("IsNotFirst") == "")
 		{
 			//Первый запуск

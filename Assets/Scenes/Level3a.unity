@@ -2940,7 +2940,7 @@ MonoBehaviour:
   - {fileID: 1965616536}
   Laser: {fileID: 1704714171804412, guid: d5443933216508045ab36b4d564d4934, type: 2}
   scoreText: {fileID: 2018546386}
-  maxScore: 33
+  maxScore: 35
   lostCanvas: {fileID: 1245726653524748, guid: 4ea31a6cd88ce5846b4c7ab9c5196b14, type: 2}
   pauseCanvas: {fileID: 1011986558949098, guid: 6b9d5be0c4dd3224c8f24ae03c64723d,
     type: 2}

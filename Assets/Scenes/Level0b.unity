@@ -1450,9 +1450,9 @@ MonoBehaviour:
   directionNormal:
   - {x: 0, y: -1}
   accelerationNormal:
-  - 4
+  - 3
   maxSpeedNormal:
-  - 6
+  - 4
   coefForAccel:
   - 1
 --- !u!212 &318356948

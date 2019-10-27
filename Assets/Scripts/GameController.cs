@@ -267,6 +267,7 @@ public class GameController : MonoBehaviour {
 		if ((int)iteratorOfLaser == targetOfLasers.Length - 1)
 		{
 			Debug.Log("Уровень завершён");
+			targetOfLasers[(int)iteratorOfLaser].GetComponent<VertexDopScript>().deanimate_select_vertex();
 			level_complete();
 		} else
 		{
@@ -277,6 +278,8 @@ public class GameController : MonoBehaviour {
 			sourceOfLasers[(int)iteratorOfLaser - 1].GetComponent<VertexDopScript>().deanimate_select_vertex();
 			//Включить анимацию текущего источника
 			sourceOfLasers[(int)iteratorOfLaser].GetComponent<VertexDopScript>().animate_select_vertex();
+			//Выключить анимацию предыдущего приёмника
+			targetOfLasers[(int)iteratorOfLaser - 1].GetComponent<VertexDopScript>().deanimate_select_vertex();
 
 			// Смена текущей вершины
 			change_current_vertex();

@@ -9549,20 +9549,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1436027862605458, guid: 772495c88633ad145a3d16b2d664b2dc, type: 2}
-      propertyPath: m_Name
-      value: Vertex 1 (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114930229015161172, guid: 772495c88633ad145a3d16b2d664b2dc,
-        type: 2}
-      propertyPath: hint
-      value: 
-      objectReference: {fileID: 1812548968}
     - target: {fileID: 114930229015161172, guid: 772495c88633ad145a3d16b2d664b2dc,
         type: 2}
       propertyPath: hintForClick
       value: 
       objectReference: {fileID: 2033396032}
+    - target: {fileID: 1436027862605458, guid: 772495c88633ad145a3d16b2d664b2dc, type: 2}
+      propertyPath: m_Name
+      value: Vertex 1 (2)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 772495c88633ad145a3d16b2d664b2dc, type: 2}
   m_IsPrefabParent: 0

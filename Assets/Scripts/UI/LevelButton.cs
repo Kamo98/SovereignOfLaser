@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class LevelButton : MonoBehaviour {
 
 	public Sprite currentLevelImg;
@@ -62,7 +63,8 @@ public class LevelButton : MonoBehaviour {
 			}
 		}
 
-		if (statePrefs == State_of_level.current)
+		const bool DEBUG = true;
+		if (statePrefs == State_of_level.current || DEBUG)
 		{
 			//Текущий уровень
 			state = State_of_level.current;
@@ -71,8 +73,6 @@ public class LevelButton : MonoBehaviour {
 			levelButton.GetChild(0).GetComponent<Text>().color = Color.red;
 			levelButton.GetChild(0).gameObject.SetActive(true);
 		}
-
-
 	}
 
 

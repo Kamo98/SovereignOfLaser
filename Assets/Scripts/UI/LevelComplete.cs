@@ -26,6 +26,8 @@ public class LevelComplete : MonoBehaviour {
 
 		countStars = (int) (curScore / (maxScore / 3.0f));
 		Debug.Log("curScore = " + curScore + "  maxScore = " + maxScore + " countStars = " + countStars);
+		Debug.Log("maxScore / 3.0f = " + maxScore / 3.0f + "  curScore / (maxScore / 3.0f) = " + curScore / (maxScore / 3.0f) + " (int) (curScore / (maxScore / 3.0f)) = " + (int)(curScore / (maxScore / 3.0f)));
+
 		if (countStars >= 1)
 		{
 			animator.SetBool("Star1", true);

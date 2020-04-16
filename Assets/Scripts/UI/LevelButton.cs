@@ -63,7 +63,7 @@ public class LevelButton : MonoBehaviour {
 			}
 		}
 
-		const bool DEBUG = true;
+		const bool DEBUG = false;
 		if (statePrefs == State_of_level.current || DEBUG)
 		{
 			//Текущий уровень

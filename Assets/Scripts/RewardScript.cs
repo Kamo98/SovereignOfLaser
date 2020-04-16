@@ -8,6 +8,8 @@ public class RewardScript : MonoBehaviour {
 
 	public int Reward;
 	public float speed;
+	public const int maxCountSound = 3;
+	public static int curCountSound = 0;
 
 	private bool isActive;
 

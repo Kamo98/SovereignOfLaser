@@ -34,7 +34,7 @@ public class LevelComplete : MonoBehaviour {
 			if (countStars >= 2)
 			{
 				animator.SetBool("Star2", true);
-				if (countStars == 3)
+				if (countStars >= 3)
 					animator.SetBool("Star3", true);
 			}
 		}

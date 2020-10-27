@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class CameraControl : MonoBehaviour {
@@ -327,4 +328,18 @@ public class CameraControl : MonoBehaviour {
 	{
 		rigidBody.simulated = true;
 	}
+
+	//Замедление движения камеры в k раз
+	public void slow_down(float k) {
+		currentAcceleration /= k;
+		currentMaxSpeed /= k;
+	}
+
+	//Ускорение движения камеры в k раз
+	public void speed_up(float k)
+	{
+		currentAcceleration *= k;
+		currentMaxSpeed *= k;
+	}
+	
 }

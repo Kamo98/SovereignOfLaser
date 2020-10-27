@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/List of levels.unity
+- path: Assets/Scenes/Level5c.unity
   isLoaded: 1
   isActive: 1

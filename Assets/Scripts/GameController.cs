@@ -368,6 +368,7 @@ public class GameController : MonoBehaviour {
 	{
 		gameOver = true;
 		//lostCanvas.gameObject.SetActive(true);
+
 		GameObject lostCanvasObj = Instantiate(lostCanvas);
 		lostCanvasObj.GetComponent<Canvas>().worldCamera = Camera.main;
 		cameraControl.full_break();
@@ -408,9 +409,25 @@ public class GameController : MonoBehaviour {
 		pausePanelObj.GetComponent<Animator>().SetBool("Pause", false);
 	}
 
+
+
+
+
 	private void log_dcitionary<Tkey, Tval>(Dictionary<Tkey, Tval> dict)
 	{
 		foreach (KeyValuePair<Tkey, Tval> pr in dict)
 			Debug.Log(pr.Key + " : " + pr.Value);
+	}
+
+
+
+	/*=============================
+	 * ИГРОВЫЕ БОНУСЫ
+	 */
+
+	//Замедлить движение камеры
+	public void slow_move_down()
+	{
+		cameraControl.slow_down(2);
 	}
 }

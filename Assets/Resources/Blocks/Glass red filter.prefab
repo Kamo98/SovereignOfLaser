@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 212388531913454274}
   - component: {fileID: 61138331730073038}
   - component: {fileID: 114569840421992756}
-  - component: {fileID: 95566662446613692}
   - component: {fileID: 114845289720374338}
+  - component: {fileID: 95566662446613692}
   m_Layer: 0
   m_Name: Glass red filter
   m_TagString: StaticGlass

@@ -155,3 +155,4 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 5f3b593a205217e0131b37f58de48d39 Assembly-CSharp.dll:.LevelButton
 0a4aa0d2a20c7b83e804b7c8f16ef7e3 Assembly-CSharp.dll:.labelForCameraScript
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MainMenuScript
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ScrollControl

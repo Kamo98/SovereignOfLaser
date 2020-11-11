@@ -69,9 +69,6 @@ public class UI_Buttons : MonoBehaviour {
 			case "Button next level":
 				gameController.move_to_next_level();
 			break;
-			case "Button slow down":
-				gameController.slow_move_down();
-			break;
 		}
 	}
 }

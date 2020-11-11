@@ -144,6 +144,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 342dfde76b328ebbf79a9e23534f87e6 UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestAssemblyProvider
 64eb32cc721b1cc68a91ed57461e188c UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender
 7d2fd93ca9eab0570262fbc49f864a92 Assembly-CSharp.dll:.Laser
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ScrollControl
 ee5123e3e7fb8c09919d502b64c0dcb4 Assembly-CSharp.dll:.CloseHint
 2fa27273368f736ae85c5cf3ed64ede1 Assembly-CSharp.dll:.RewardScript
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
@@ -155,4 +156,6 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 5f3b593a205217e0131b37f58de48d39 Assembly-CSharp.dll:.LevelButton
 0a4aa0d2a20c7b83e804b7c8f16ef7e3 Assembly-CSharp.dll:.labelForCameraScript
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MainMenuScript
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ScrollControl
+36ccf3e099dade5e1cdbc99f80d7eabc Assembly-CSharp.dll:.SlowMotion
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BonusesController
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.BonusButton

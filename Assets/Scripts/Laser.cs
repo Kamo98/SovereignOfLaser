@@ -72,8 +72,8 @@ public class Laser : MonoBehaviour {
 								//Совпадают ли цвет блока и лазера								
 								if (blockScript.color == COLOR_OF_VERTEX.TRANSPARENT || blockScript.color == numOfMaterial)
 								{
-									if (blockScript.is_active())
-										blockScript.hit_of_laser();
+									//if (blockScript.is_active())
+									blockScript.hit_of_laser();
 								}
 								else
 								{

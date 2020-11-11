@@ -335,11 +335,12 @@ public class CameraControl : MonoBehaviour {
 		currentMaxSpeed /= k;
 	}
 
-	//Ускорение движения камеры в k раз
-	public void speed_up(float k)
+	//Преклащение замедленного движения камеры
+	public void stop_slow_down ()
 	{
-		currentAcceleration *= k;
-		currentMaxSpeed *= k;
+		int iterOfLaser = gameController.get_iterator_of_lasers();
+		currentAcceleration = labelForCameraScripts[indexForLabels].accelerationNormal[iterOfLaser];
+		currentMaxSpeed = labelForCameraScripts[indexForLabels].maxSpeedNormal[iterOfLaser];
 	}
 	
 }

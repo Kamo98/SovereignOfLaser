@@ -760,6 +760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: -1
+  orientation: 1
 --- !u!114 &114677199198374606
 MonoBehaviour:
   m_ObjectHideFlags: 1

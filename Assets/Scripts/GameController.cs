@@ -224,8 +224,16 @@ public class GameController : MonoBehaviour {
 	}
 
 
-	// Снимает выделение со смежных с текущей вершин
-	private void unselected_related_vertexes()
+    //Перестроить пути для текущей вершины (используется при удалении/изменении блоков)
+    public void rebuild_for_curent_vertex()
+    {
+        graphBuilder.rebuild_for_vertex(currentVertex, iteratorOfLaser);
+        unselected_related_vertexes();
+        selected_related_vertexes();
+    }
+
+    // Снимает выделение со смежных с текущей вершин
+    private void unselected_related_vertexes()
 	{
 		// При необходимости снимаем выделение с прежних смежных вершин
 		if (enhanceVertexes != null)
@@ -421,13 +429,14 @@ public class GameController : MonoBehaviour {
 
 
 
+
+
+
+
+
 	/*=============================
 	 * ИГРОВЫЕ БОНУСЫ
 	 */
 
-	//Замедлить движение камеры
-	public void slow_move_down()
-	{
-		cameraControl.slow_down(2);
-	}
+	
 }

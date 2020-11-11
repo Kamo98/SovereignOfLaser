@@ -21183,20 +21183,6 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 542185765}
-    - target: {fileID: 223789301336770574, guid: 2d01d2a1564729648ae585ac2b23911e,
-        type: 2}
-      propertyPath: m_PlaneDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114719481267072166, guid: 2d01d2a1564729648ae585ac2b23911e,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1215383185435740, guid: 2d01d2a1564729648ae585ac2b23911e, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2d01d2a1564729648ae585ac2b23911e, type: 2}
   m_IsPrefabParent: 0

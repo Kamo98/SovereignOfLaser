@@ -70,6 +70,7 @@
      <Compile Include="Assets\Scripts\UI\LevelButton.cs" />
      <Compile Include="Assets\Scripts\UI\LevelComplete.cs" />
      <Compile Include="Assets\Scripts\UI\MainMenuScript.cs" />
+     <Compile Include="Assets\Scripts\UI\SceneTransition.cs" />
      <Compile Include="Assets\Scripts\UI\ScrollControl.cs" />
      <Compile Include="Assets\Scripts\UI\UI_Buttons.cs" />
      <Compile Include="Assets\Scripts\VertexDopScript.cs" />

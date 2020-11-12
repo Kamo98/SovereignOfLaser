@@ -99,6 +99,6 @@ public class LevelButton : MonoBehaviour {
 	public void OnMouseUpAsButton()
 	{
 		if (state != State_of_level.locked)
-			SceneManager.LoadScene(name);
+			SceneTransition.switch_to_scene(name);
 	}
 }

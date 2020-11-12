@@ -369,8 +369,8 @@ public class GameController : MonoBehaviour {
 	{
 		string nameOfNextLevel = LevelsManager.nextLevels[SceneManager.GetActiveScene().name];
 		if (nameOfNextLevel != null)
-			SceneManager.LoadScene(nameOfNextLevel);
-	}
+            SceneManager.LoadScene(nameOfNextLevel);
+    }
 
 	public void game_over()
 	{
